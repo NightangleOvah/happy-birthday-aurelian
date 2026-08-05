@@ -1,9 +1,6 @@
 alert("JavaScript loaded!");
-/* ==========================================
-   PROJECT AURORA
-   SCRIPT PART 1
-========================================== */
 
+const intro = document.getElementById("intro");
 // Elements
 const intro = document.getElementById("intro");
 const website = document.getElementById("website");
