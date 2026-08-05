@@ -372,4 +372,32 @@ section{
     border:1px solid rgba(255,255,255,.12);
     border-radius:
 
+}/* Cursor Glow */
+
+#cursorGlow{
+
+position:fixed;
+
+width:350px;
+height:350px;
+
+border-radius:50%;
+
+pointer-events:none;
+
+background:radial-gradient(circle,
+rgba(124,108,255,.35),
+rgba(89,217,255,.18),
+transparent 70%);
+
+filter:blur(45px);
+
+transform:translate(-50%,-50%);
+
+z-index:-1;
+
+transition:
+left .12s linear,
+top .12s linear;
+
 }
