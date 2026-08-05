@@ -1,42 +1,187 @@
-Click Gift
 
-↓
+/* ==========================================
+   PROJECT AURORA
+   SCRIPT PART 1
+========================================== */
 
-Screen blurs
+// Elements
+const intro = document.getElementById("intro");
+const website = document.getElementById("website");
 
-↓
+const openGift = document.getElementById("openGift");
+const celebrate = document.getElementById("celebrate");
 
-Background slows
+const overlay = document.getElementById("birthdayOverlay");
+const closeOverlay = document.getElementById("closeOverlay");
 
-↓
+const cursorGlow = document.getElementById("cursorGlow");
 
-Loading animation
+const musicButton = document.getElementById("music");
 
-↓
+// Hide overlay at startup
+if (overlay) {
+    overlay.style.display = "none";
+}
 
-Fireworks
+// Hide website until gift opens
+if (website) {
+    website.style.display = "none";
+}
 
-↓
+// Gift opening
+if (openGift) {
+    openGift.addEventListener("click", () => {
 
-Confetti
+        openGift.disabled = true;
 
-↓
+        intro.style.transition = "1.2s";
+        intro.style.opacity = "0";
+        intro.style.transform = "scale(1.05)";
 
-"HAPPY BIRTHDAY AURELIAN"
+        setTimeout(() => {
 
-↓
+            intro.style.display = "none";
 
-Heartfelt message fades in
+            website.style.display = "block";
 
-↓
+            website.style.opacity = "0";
 
-Continue exploring
-const glow = document.getElementById("cursorGlow");
+            website.style.transition = "1.4s";
 
-document.addEventListener("mousemove",(e)=>{
+            requestAnimationFrame(() => {
+                website.style.opacity = "1";
+            });
 
-glow.style.left=e.clientX+"px";
+            launchConfetti();
 
-glow.style.top=e.clientY+"px";
+        },1200);
+
+    });
+}
+
+// Celebrate button
+if (celebrate) {
+
+    celebrate.addEventListener("click",()=>{
+
+        overlay.style.display="flex";
+
+        overlay.animate([
+            {
+                opacity:0,
+                transform:"scale(.9)"
+            },
+            {
+                opacity:1,
+                transform:"scale(1)"
+            }
+        ],{
+            duration:500,
+            fill:"forwards"
+        });
+
+        launchConfetti();
+
+    });
+
+}
+
+// Close overlay
+if(closeOverlay){
+
+closeOverlay.addEventListener("click",()=>{
+
+overlay.style.display="none";
 
 });
+
+}
+
+// Cursor Glow (Desktop)
+document.addEventListener("mousemove",(e)=>{
+
+cursorGlow.style.left=e.clientX+"px";
+cursorGlow.style.top=e.clientY+"px";
+
+});
+
+// Touch Support (Mobile)
+document.addEventListener("touchmove",(e)=>{
+
+const touch=e.touches[0];
+
+cursorGlow.style.left=touch.clientX+"px";
+cursorGlow.style.top=touch.clientY+"px";
+
+});
+
+// Music button (placeholder)
+if(musicButton){
+
+musicButton.addEventListener("click",()=>{
+
+alert("🎵 Music will be added in Version 3!");
+
+});
+
+}
+
+// Placeholder function
+function launchConfetti(){
+
+// Part 2 will replace this
+console.log("Confetti!");
+  
+  
+  
+
+}/* ==========================================
+   SCRIPT PART 2A
+   CONFETTI + BALLOONS
+========================================== */
+
+function launchConfetti(){
+
+    for(let i=0;i<120;i++){
+
+        const piece=document.createElement("div");
+
+        piece.className="confetti";
+
+        piece.style.left=Math.random()*100+"vw";
+
+        piece.style.top="-20px";
+
+        piece.style.background=[
+            "#FFD76B",
+            "#72D6FF",
+            "#7C6CFF",
+            "#FF84D8",
+            "#FFFFFF"
+        ][Math.floor(Math.random()*5)];
+
+        piece.style.transform=`rotate(${Math.random()*360}deg)`;
+
+        piece.style.animationDuration=(3+Math.random()*3)+"s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>piece.remove(),6000);
+
+    }
+
+    launchBalloons();
+
+}
+
+function launchBalloons(){
+
+    const colors=[
+        "#FF6B6B",
+        "#FFD76B",
+        "#72D6FF",
+        "#7C6CFF",
+        "#FF84D8"
+    ];
+
+    for
