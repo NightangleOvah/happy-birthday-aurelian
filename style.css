@@ -1,11 +1,20 @@
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:linear-gradient(-45deg,#1a0033,#3b0066,#001f4d,#4d0000);
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
-    color:white;
+    font-family:Arial,Helvetica,sans-serif;
     text-align:center;
+    color:white;
+    overflow-x:hidden;
+
+    background:linear-gradient(-45deg,
+    #03045e,
+    #240046,
+    #3c096c,
+    #5a189a,
+    #240046,
+    #03045e);
+
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
 }
 
 @keyframes bgMove{
@@ -16,49 +25,50 @@ body{
 
 h1{
     margin-top:40px;
-    font-size:55px;
-    color:gold;
-    text-shadow:0 0 20px gold;
+    font-size:60px;
+    color:#ffd60a;
+    text-shadow:0 0 10px gold,
+                 0 0 20px gold,
+                 0 0 40px gold;
     animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
-    50%{
-        transform:scale(1.05);
-    }
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
 }
 
-#photo{
-    width:300px;
+img{
+    width:340px;
     max-width:90%;
     border-radius:25px;
     border:6px solid gold;
     box-shadow:0 0 30px gold;
-    margin:25px 0;
 }
 
 h2{
-    color:#ffd700;
+    color:#ffd60a;
+    font-size:42px;
 }
 
 p{
-    width:90%;
-    max-width:800px;
-    margin:auto;
-    font-size:22px;
+    font-size:28px;
     line-height:1.8;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
 }
 
 button{
-    margin:35px;
-    padding:18px 35px;
-    font-size:22px;
+    padding:22px 45px;
+    font-size:28px;
     border:none;
-    border-radius:15px;
+    border-radius:18px;
     background:gold;
-    color:black;
     cursor:pointer;
     transition:.3s;
+    box-shadow:0 0 20px gold;
 }
 
 button:hover{
@@ -67,15 +77,23 @@ button:hover{
 
 #gift{
     display:none;
-    margin:30px auto;
-    width:90%;
-    max-width:700px;
-    background:rgba(255,255,255,.12);
-    border-radius:20px;
-    padding:25px;
+    margin-top:50px;
+    animation:fade 1s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .footer{
-    margin:50px;
+    margin:60px;
     opacity:.8;
-  }
+    font-size:24px;
+}
