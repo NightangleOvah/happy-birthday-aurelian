@@ -1,4 +1,4 @@
-
+alert("JavaScript loaded!");
 /* ==========================================
    PROJECT AURORA
    SCRIPT PART 1
