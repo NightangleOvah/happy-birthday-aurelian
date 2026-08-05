@@ -1,6 +1,4 @@
 alert("JavaScript loaded!");
-
-const intro = document.getElementById("intro");
 // Elements
 const intro = document.getElementById("intro");
 const website = document.getElementById("website");
