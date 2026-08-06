@@ -1,367 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🎂 Happy Birthday Aurelian</title>
-
-<meta name="theme-color" content="#090B1A">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aurelian</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- BACKGROUND -->
+    <div class="cursor-glow"></div>
+
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <div class="loader-spinner"></div>
+            <p class="intro-status">Preparing Something Special...</p>
+            <h1 class="intro-title">A Premium Birthday Experience</h1>
+            <div class="gift-box" id="gift-box">🎁</div>
+            <button id="open-gift-btn" class="btn-primary glow-btn">Open Gift</button>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+        
+        <nav class="glass-nav">
+            <div class="nav-brand">Aurelian's Day</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#finale">Finale</a></li>
+            </ul>
+            <button id="music-btn" class="music-toggle">🎵 Music: Off</button>
+        </nav>
+
+        <section id="hero" class="hero-section">
+            <div class="hero-text">
+                <h1 class="gradient-text">Happy Birthday<br><span>Aurelian</span></h1>
+                <p>Three years • Countless memories • One unforgettable friendship</p>
+                <div class="hero-buttons">
+                    <button id="celebrate-btn" class="btn-primary">Celebrate 🎉</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="glass-card stat-card"><h3>3</h3><p>Years</p></div>
+                    <div class="glass-card stat-card"><h3>KCC</h3><p>Milestone</p></div>
+                    <div class="glass-card stat-card"><h3>∞</h3><p>Laughs</p></div>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="assets/aurelian.png" alt="Aurelian Portrait" class="floating-portrait">
+            </div>
+        </section>
+
+        <section id="story" class="section">
+            <h2 class="section-title">The Journey</h2>
+            <div class="story-grid">
+                <div class="glass-card story-card">
+                    <h3>🤝 Three Years</h3>
+                    <p>Three incredible years of friendship filled with jokes, games, conversations and unforgettable memories.</p>
+                </div>
+                <div class="glass-card story-card">
+                    <h3>🏫 KCC</h3>
+                    <p>Meeting in person made everything even more memorable.</p>
+                </div>
+                <div class="glass-card story-card">
+                    <h3>😂 UNC Energy</h3>
+                    <p>Random moments, inside jokes, and absolute UNC energy every single day.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section">
+            <h2 class="section-title">Our Favourite Memories</h2>
+            <div class="gallery-container">
+                <div class="glass-card gallery-item centerpiece">
+                    <img src="assets/file_00000000ccd081fa86f2d788f90bb2cf.png" alt="Memory Collage">
+                    <span class="caption">The Ultimate Collage</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <h2 class="section-title">Timeline</h2>
+            <div class="timeline-container">
+                <div class="glass-card timeline-node">Friendship Begins</div>
+                <div class="glass-card timeline-node">Three Years Together</div>
+                <div class="glass-card timeline-node">Meeting At KCC</div>
+                <div class="glass-card timeline-node">VR & Air Hockey</div>
+                <div class="glass-card timeline-node">Happy Birthday!</div>
+            </div>
+        </section>
+
+        <section id="finale" class="section">
+            <div class="glass-card finale-card">
+                <h2>Happy Birthday ❤️</h2>
+                <p>Thank you for being an amazing friend. May this year bring you happiness, success, and unforgettable memories.</p>
+                <p class="signature">Made especially for Aurelian.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <canvas id="fireworks-canvas"></canvas>
+
+    <audio id="bg-music" loop src="assets/birthday-music.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
-<div id="aurora"></div>
-
-<div id="stars"></div>
-
-<div id="particles"></div>
-
-<div id="cursorGlow"></div>
-
-<div id="loadingScreen">
-
-<div class="loader">
-
-<div class="loaderRing"></div>
-
-<div class="loaderRing"></div>
-
-<div class="loaderRing"></div>
-
-<h2>Loading Your Surprise...</h2>
-
-</div>
-
-</div>
-
-<!-- INTRO -->
-
-<section id="intro">
-
-<div class="introBackground"></div>
-
-<div class="introContent">
-
-<div class="giftContainer">
-
-<div id="giftBox">
-
-<div class="giftGlow"></div>
-
-<div class="giftShadow"></div>
-
-<img
-src="assets/aurelian.png"
-id="giftImage"
-alt="Aurelian">
-
-</div>
-
-</div>
-
-<p class="smallTitle">
-
-A PREMIUM BIRTHDAY EXPERIENCE
-
-</p>
-
-<h1>
-
-Happy Birthday
-
-<span>Aurelian</span>
-
-</h1>
-
-<p class="introText">
-
-Three years of friendship.
-
-One unforgettable day at KCC.
-
-Hundreds of memories.
-
-One website made especially for you.
-
-</p>
-
-<button id="openGift">
-
-🎁 Open Your Surprise
-
-</button>
-
-<div class="scrollHint">
-
-Scroll
-
-↓
-
-</div>
-
-</div>
-
-</section>
-
-<!-- WEBSITE -->
-
-<div id="website">
-
-<nav>
-
-<div class="logo">
-
-🎂 Happy Birthday
-
-</div>
-
-<div class="navLinks">
-
-<a href="#hero">Home</a>
-
-<a href="#story">Story</a>
-
-<a href="#gallery">Gallery</a>
-
-<a href="#timeline">Timeline</a>
-
-<a href="#ending">Finale</a>
-
-</div>
-
-</nav>
-
-<section id="hero">
-
-<div class="heroLeft">
-
-<div class="premiumBadge">
-
-✨ Crafted Especially For Aurelian
-
-</div>
-
-<h1>
-
-Happy Birthday
-
-<span>Aurelian</span>
-
-</h1>
-
-<p>
-
-Not everyone gets an entire website made just for them.
-
-This isn't just a birthday message.
-
-It's a collection of memories,
-
-inside jokes,
-
-friendship,
-
-and appreciation.
-
-Built with ❤️ just for you.
-
-</p>
-
-<div class="heroButtons">
-
-<button id="celebrate">
-
-🎉 Celebrate
-
-</button>
-
-<button id="music">
-
-🎵 Music
-
-</button>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-
-<h2>3</h2>
-
-<p>Years</p>
-
-</div>
-
-<div class="stat">
-
-<h2>KCC</h2>
-
-<p>Where We Met</p>
-
-</div>
-
-<div class="stat">
-
-<h2>∞</h2>
-
-<p>Memories</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="heroRight">
-
-<div class="photoCard">
-
-<div class="photoGlow"></div>
-
-<img
-src="assets/aurelian.png"
-id="heroImage"
-alt="Aurelian">
-
-</div>
-
-</div>
-
-</section><!-- STORY -->
-
-<section id="story">
-
-<div class="sectionHeader">
-
-<span class="eyebrow">
-Our Story
-</span>
-
-<h2>
-Three Years of Memories
-</h2>
-
-<p>
-Some friendships happen by chance.
-The best ones stay because of who the person is.
-Here's a small part of our journey.
-</p>
-
-</div>
-
-<div class="storyGrid">
-
-<div class="storyCard">
-
-<div class="storyIcon">
-🤝
-</div>
-
-<h3>
-The Beginning
-</h3>
-
-<p>
-Three years ago we became friends.
-Neither of us knew how many memories we'd end up making together.
-</p>
-
-</div>
-
-<div class="storyCard">
-
-<div class="storyIcon">
-🏫
-</div>
-
-<h3>
-KCC
-</h3>
-
-<p>
-Meeting in person made everything even better.
-It became one of the best memories of our friendship.
-</p>
-
-</div>
-
-<div class="storyCard">
-
-<div class="storyIcon">
-😂
-</div>
-
-<h3>
-UNC Energy
-</h3>
-
-<p>
-Every friend group has someone who keeps everyone laughing.
-That person has always been you.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MEMORY GALLERY -->
-
-<section id="gallery">
-
-<div class="sectionHeader">
-
-<span class="eyebrow">
-
-Our Memories
-
-</span>
-
-<h2>
-
-Some moments deserve more than staying in a gallery.
-
-</h2>
-
-<p>
-
-Every picture tells a story.
-
-</p>
-
-</div>
-
-<div class="galleryGrid">
-
-<div class="galleryItem large">
-
-<img
-src="assets/file_00000000ccd081fa86f2d788f90bb2cf.png"
-alt="Our Memories">
-
-<div class="galleryOverlay">
-
-<h3>
-
-Three Years Together
-
-</h3>
-
-<p>
-
-Every photo here reminds me why this
