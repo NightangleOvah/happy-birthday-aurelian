@@ -3,110 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Aurelian</title>
+    <title>Happy Birthday Aurelian | An Interactive Experience</title>
+    
+    <meta name="title" content="Happy Birthday Aurelian 🎉">
+    <meta name="description" content="Three years. Thousands of laughs. Countless memories. One friendship worth celebrating.">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/aurelian-birthday/">
+    <meta property="og:title" content="Happy Birthday Aurelian 🎉">
+    <meta property="og:description" content="A cinematic interactive gift celebrating three years of friendship.">
+    <meta property="og:image" content="assets/aurelian.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="cursor-glow"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div id="intro-screen" class="intro-screen">
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"></div>
+
+    <canvas id="aurora-canvas" aria-hidden="true"></canvas>
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <div id="intro-screen" role="dialog" aria-modal="true" aria-label="Welcome Sequence">
         <div class="intro-content">
-            <div class="loader-spinner"></div>
-            <p class="intro-status">Preparing Something Special...</p>
-            <h1 class="intro-title">A Premium Birthday Experience</h1>
-            <div class="gift-box" id="gift-box">🎁</div>
-            <button id="open-gift-btn" class="btn-primary glow-btn">Open Gift</button>
+            <span class="badge intro-badge">Special Delivery</span>
+            
+            <h2 id="intro-status-text" class="pre-title sequence-text">Preparing Something Special...</h2>
+            
+            <button class="premium-gift magnetic-btn hidden-intro-element" id="open-gift-btn" type="button" aria-label="Open your birthday gift">
+                <div class="gift-box-inner">
+                    <span class="gift-emoji" aria-hidden="true">🎁</span>
+                </div>
+            </button>
+
+            <p id="click-hint" class="click-hint hidden-intro-element">Click to enter experience</p>
+            <button id="skip-intro-btn" class="text-link-btn" type="button">Skip Intro ➔</button>
         </div>
     </div>
 
-    <div id="main-content" class="hidden">
+    <main id="main-content" class="locked" aria-hidden="true">
         
-        <nav class="glass-nav">
-            <div class="nav-brand">Aurelian's Day</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#story">Story</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#finale">Finale</a></li>
+        <nav class="glass-nav" id="main-nav" aria-label="Main Navigation">
+            <a href="#hero" class="brand">Aurelian</a>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#story" class="nav-link">Story</a></li>
+                <li><a href="#memories" class="nav-link">Memories</a></li>
+                <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                <li><a href="#finale" class="nav-link">Finale</a></li>
+                <li class="nav-indicator" aria-hidden="true"></li>
             </ul>
-            <button id="music-btn" class="music-toggle">🎵 Music: Off</button>
+
+            <div class="mini-player">
+                <button id="music-btn" class="magnetic-btn music-toggle" type="button" aria-label="Toggle background music">
+                    <span class="music-note" aria-hidden="true">♫</span>
+                    <div class="player-info">
+                        <span class="player-title">Happy Birthday Theme</span>
+                        <span class="player-status" id="player-status">Tap to Play</span>
+                    </div>
+                </button>
+            </div>
         </nav>
 
-        <section id="hero" class="hero-section">
-            <div class="hero-text">
-                <h1 class="gradient-text">Happy Birthday<br><span>Aurelian</span></h1>
-                <p>Three years • Countless memories • One unforgettable friendship</p>
-                <div class="hero-buttons">
-                    <button id="celebrate-btn" class="btn-primary">Celebrate 🎉</button>
+        <section id="hero" class="cinematic-section hero-section">
+            <div class="hero-text-wrap" data-speed="0.03">
+                <span class="badge hero-badge">✨ Crafted Especially For Aurelian</span>
+                
+                <h1 class="dramatic-title" id="hero-heading" tabindex="-1">
+                    <span class="title-line title-sub">HAPPY</span>
+                    <span class="title-line title-main">Birthday</span>
+                    <span class="title-line title-name">Aurelian</span>
+                </h1>
+
+                <p class="hero-emotional-lead">
+                    Three years. Thousands of laughs. Countless memories. One friendship worth celebrating.
+                </p>
+
+                <p class="hero-intro">
+                    Built to celebrate a true legend—from gaming sessions and UNC energy to meeting at KCC and making real-world memories.
+                </p>
+
+                <div class="hero-cta-group">
+                    <button id="hero-celebrate-btn" class="magnetic-btn cta-btn primary-cta" type="button">Celebrate 🎉</button>
+                    <a href="#story" class="magnetic-btn cta-btn secondary-cta">Explore ➔</a>
                 </div>
-                <div class="stats-grid">
-                    <div class="glass-card stat-card"><h3>3</h3><p>Years</p></div>
-                    <div class="glass-card stat-card"><h3>KCC</h3><p>Milestone</p></div>
-                    <div class="glass-card stat-card"><h3>∞</h3><p>Laughs</p></div>
+
+                <div class="hero-stats">
+                    <div class="stat-glass tilt-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Years Strong</span>
+                    </div>
+                    <div class="stat-glass tilt-card">
+                        <span class="stat-number">KCC</span>
+                        <span class="stat-label">Milestone</span>
+                    </div>
+                    <div class="stat-glass tilt-card">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Inside Jokes</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image-container">
-                <img src="assets/aurelian.png" alt="Aurelian Portrait" class="floating-portrait">
+
+            <div class="hero-portrait-wrap" data-speed="-0.02" id="portrait-wrapper">
+                <div class="rotating-ring" aria-hidden="true"></div>
+                <div class="portrait-particles-canvas-wrap">
+                    <canvas id="portrait-particles" aria-hidden="true"></canvas>
+                </div>
+                <div class="portrait-ambient-glow" aria-hidden="true"></div>
+                <div class="portrait-glass-frame tilt-card">
+                    <div class="glass-reflection" aria-hidden="true"></div>
+                    <img src="assets/aurelian.png" alt="Aurelian Portrait" class="hero-portrait" loading="eager">
+                </div>
             </div>
         </section>
 
-        <section id="story" class="section">
-            <h2 class="section-title">The Journey</h2>
-            <div class="story-grid">
-                <div class="glass-card story-card">
-                    <h3>🤝 Three Years</h3>
-                    <p>Three incredible years of friendship filled with jokes, games, conversations and unforgettable memories.</p>
+        <section id="story" class="cinematic-section">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag">01 / Chapter</span>
+                <h2>The Journey</h2>
+            </div>
+            <div class="cards-container">
+                <article class="glass-card tilt-card scroll-reveal" data-delay="0">
+                    <div class="floating-bg-icon" aria-hidden="true">🤝</div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                    <h3>Three Years</h3>
+                    <p>Three incredible years of friendship filled with late-night chats, games, and genuine conversations.</p>
+                </article>
+                <article class="glass-card tilt-card scroll-reveal" data-delay="150">
+                    <div class="floating-bg-icon" aria-hidden="true">🏫</div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                    <h3>KCC Chapter</h3>
+                    <p>Meeting up at KCC took our friendship from online banter to iconic real-world memories.</p>
+                </article>
+                <article class="glass-card tilt-card scroll-reveal" data-delay="300">
+                    <div class="floating-bg-icon" aria-hidden="true">⚡</div>
+                    <div class="card-glow" aria-hidden="true"></div>
+                    <h3>UNC Energy</h3>
+                    <p>Random moments, uncontrollable laughter, inside jokes, and unmatched positive energy every single day.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="memories" class="cinematic-section">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag">02 / Highlights</span>
+                <h2>Our Favourite Memories</h2>
+            </div>
+            
+            <div class="bento-grid-editorial">
+                <div class="glass-card bento-cell cell-featured tilt-card scroll-reveal">
+                    <div class="glass-reflection" aria-hidden="true"></div>
+                    <img src="assets/file_00000000ccd081fa86f2d788f90bb2cf.png" alt="Memory collage highlighting moments with Aurelian" class="bento-img" loading="lazy">
+                    <div class="bento-overlay">
+                        <span class="overlay-tag">Central Collage</span>
+                        <h3>The Journey So Far</h3>
+                    </div>
                 </div>
-                <div class="glass-card story-card">
-                    <h3>🏫 KCC</h3>
-                    <p>Meeting in person made everything even more memorable.</p>
+
+                <div class="glass-card bento-cell cell-tall tilt-card scroll-reveal" data-delay="100">
+                    <div class="bento-content">
+                        <span class="memory-icon">🕹️</span>
+                        <h3>Air Hockey & VR Rivalry</h3>
+                        <p>High-stakes matches, intense rivalries, and virtual adventures that tested our competitive spirit.</p>
+                    </div>
                 </div>
-                <div class="glass-card story-card">
-                    <h3>😂 UNC Energy</h3>
-                    <p>Random moments, inside jokes, and absolute UNC energy every single day.</p>
+
+                <div class="glass-card bento-cell cell-square tilt-card scroll-reveal" data-delay="200">
+                    <div class="bento-content">
+                        <span class="memory-icon">🥂</span>
+                        <h3>Good Times</h3>
+                        <p>Unwinding and celebrating every major and minor win.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card bento-cell cell-wide tilt-card scroll-reveal" data-delay="300">
+                    <div class="bento-content">
+                        <span class="memory-icon">🔥</span>
+                        <h3>Unmatched Energy</h3>
+                        <p>From late-night calls to spontaneous hangouts, never a dull moment in three years.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="section">
-            <h2 class="section-title">Our Favourite Memories</h2>
-            <div class="gallery-container">
-                <div class="glass-card gallery-item centerpiece">
-                    <img src="assets/file_00000000ccd081fa86f2d788f90bb2cf.png" alt="Memory Collage">
-                    <span class="caption">The Ultimate Collage</span>
+        <section id="timeline" class="cinematic-section">
+            <div class="section-header scroll-reveal">
+                <span class="section-tag">03 / Milestones</span>
+                <h2>How It Unfolded</h2>
+            </div>
+            
+            <div class="timeline-container" id="timeline-track">
+                <svg class="timeline-svg-line" aria-hidden="true">
+                    <line x1="24" y1="0" x2="24" y2="100%" id="timeline-line-path" />
+                </svg>
+
+                <div class="timeline-item scroll-reveal">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="glass-card timeline-content tilt-card">
+                        <span class="timeline-date">Where It Began</span>
+                        <h3>The First Chapter</h3>
+                        <p>The starting point of a great friendship filled with shared interests and endless banter.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-reveal" data-delay="150">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="glass-card timeline-content tilt-card">
+                        <span class="timeline-date">KCC Meetup</span>
+                        <h3>Bridging the Gap</h3>
+                        <p>Meeting up in person. The moment digital chats turned into real-world hangouts.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-reveal" data-delay="300">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="glass-card timeline-content tilt-card">
+                        <span class="timeline-date">Adventures</span>
+                        <h3>Air Hockey & VR</h3>
+                        <p>Competitive games, random side quests, and memories built along the way.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item scroll-reveal" data-delay="450">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="glass-card timeline-content tilt-card">
+                        <span class="timeline-date">Today</span>
+                        <h3>Three Years Strong</h3>
+                        <p>Celebrating brotherhood and wishing you the absolute best year ahead.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="timeline" class="section">
-            <h2 class="section-title">Timeline</h2>
-            <div class="timeline-container">
-                <div class="glass-card timeline-node">Friendship Begins</div>
-                <div class="glass-card timeline-node">Three Years Together</div>
-                <div class="glass-card timeline-node">Meeting At KCC</div>
-                <div class="glass-card timeline-node">VR & Air Hockey</div>
-                <div class="glass-card timeline-node">Happy Birthday!</div>
+        <section id="finale" class="cinematic-section">
+            <div class="glass-card finale-card scroll-reveal tilt-card">
+                <div class="glowing-heart-wrap" aria-hidden="true">
+                    <span class="glowing-heart">❤️</span>
+                </div>
+                <h2>Happy Birthday, Aurelian</h2>
+                <p class="finale-message">
+                    Thank you for every laugh, every conversation, every game, and every moment over these past three years. 
+                    You're a genuine, top-tier friend, and I'm grateful for everything we've shared. Here’s to an incredible year ahead full of success, health, and new adventures.
+                </p>
+                <p class="signature">Made especially for you.</p>
+                
+                <button id="celebrate-btn" class="magnetic-btn premium-btn" type="button">
+                    Trigger Celebration 🎉
+                </button>
             </div>
         </section>
 
-        <section id="finale" class="section">
-            <div class="glass-card finale-card">
-                <h2>Happy Birthday ❤️</h2>
-                <p>Thank you for being an amazing friend. May this year bring you happiness, success, and unforgettable memories.</p>
-                <p class="signature">Made especially for Aurelian.</p>
-            </div>
-        </section>
+        <footer class="glass-footer">
+            <p>Made with ❤️ especially for <strong>Aurelian</strong></p>
+            <p class="footer-sub">Three years of friendship • Countless memories</p>
+        </footer>
 
+    </main>
+
+    <div id="ending-screen" class="ending-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Ending Celebration Message">
+        <div class="ending-content">
+            <h2 class="ending-title">Happy Birthday, Aurelian.</h2>
+            <p class="ending-sub">Thank you for the memories.</p>
+            <button id="replay-btn" class="text-link-btn" type="button">Return to Website ➔</button>
+        </div>
     </div>
 
-    <canvas id="fireworks-canvas"></canvas>
-
-    <audio id="bg-music" loop src="assets/birthday-music.mp3"></audio>
+    <audio id="bg-music" loop preload="none">
+        <source src="assets/birthday-music.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="script.js"></script>
 </body>
-</html>
+            </html>
+
 
