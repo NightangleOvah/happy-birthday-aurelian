@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nightangleovah.github.io/happy-birthday-aurelian/sitemap.xml
